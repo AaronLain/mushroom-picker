@@ -7,7 +7,7 @@ import Mushroom from '../Mushroom/Mushroom';
 class Forest extends React.Component {
   render() {
     const buildMushrooms = this.props.forest.map((mushroom) => (
-      <Mushroom mushroom={mushroom}/>
+      <Mushroom key={mushroom.id} mushroom={mushroom}/>
     ));
     return (
       <div className="Forest d-flex flex-wrap">

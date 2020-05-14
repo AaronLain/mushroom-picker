@@ -161,7 +161,15 @@ const mushrooms = [
   },
 ];
 
-const basket = [];
+const basket = [
+  {
+    id: 'shroom20',
+    name: 'Turbinellus Floccosus',
+    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Gomphus_floccosus_6051.JPG',
+    isMagic: false,
+    isPoisonous: true,
+    isDeadly: false,
+  }];
 
 const getBasket = () => basket;
 const getMushrooms = () => mushrooms;
