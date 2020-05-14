@@ -6,6 +6,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom2',
@@ -14,6 +15,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom3',
@@ -22,6 +24,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom4',
@@ -30,6 +33,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom5',
@@ -38,6 +42,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom6',
@@ -46,6 +51,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom7',
@@ -54,6 +60,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom8',
@@ -62,6 +69,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom9',
@@ -70,6 +78,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom10',
@@ -78,6 +87,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom11',
@@ -86,6 +96,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom12',
@@ -94,6 +105,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom13',
@@ -102,6 +114,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom14',
@@ -110,6 +123,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom15',
@@ -118,6 +132,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom16',
@@ -126,6 +141,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom17',
@@ -134,6 +150,7 @@ const mushrooms = [
     isMagic: true,
     isPoisonous: false,
     isDeadly: true,
+    inBasket: false,
   },
   {
     id: 'shroom18',
@@ -142,6 +159,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: true,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom19',
@@ -150,6 +168,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: true,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom20',
@@ -158,6 +177,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: true,
     isDeadly: false,
+    inBasket: false,
   },
 ];
 
@@ -166,4 +186,18 @@ const basket = [];
 const getBasket = () => basket;
 const getMushrooms = () => mushrooms;
 
-export default { getBasket, getMushrooms };
+const pickShroom = (shroomId) => {
+  mushrooms.forEach((response) => {
+    const idx = mushrooms.indexOf(response);
+    console.error(response, 'response in forEach');
+    if (response.id === shroomId) {
+      response.inBasket = true;
+      console.error(response, 'response in if');
+      basket.push(response);
+      mushrooms.splice(idx, 1);
+      console.error(basket, 'basket??');
+    }
+  });
+};
+
+export default { getBasket, getMushrooms, pickShroom };

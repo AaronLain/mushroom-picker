@@ -7,6 +7,7 @@ const shroomShape = PropTypes.shape({
   isMagic: PropTypes.bool.isRequired,
   isPoisonous: PropTypes.bool.isRequired,
   isDeadly: PropTypes.bool.isRequired,
+  inBasket: PropTypes.bool.isRequired,
 });
 
 export default { shroomShape };
