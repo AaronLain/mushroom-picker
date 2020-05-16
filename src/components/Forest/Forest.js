@@ -14,7 +14,7 @@ class Forest extends React.Component {
   render() {
     const { forest, pickAShroom } = this.props;
     const buildMushrooms = forest.map((mushroom) => (
-      <Mushroom key={mushroom.id} mushroom={mushroom} pickAShroom={pickAShroom}/>
+      <Mushroom key={mushroom.id} mushroom={mushroom} pickAShroom={pickAShroom} />
     ));
     return (
       <div className="Forest d-flex flex-wrap">

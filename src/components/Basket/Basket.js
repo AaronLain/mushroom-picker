@@ -6,7 +6,7 @@ class Basket extends React.Component {
   render() {
     const { basket } = this.props;
     const buildBasket = basket.map((mushroom) => (
-      <Mushroom key={mushroom.id} mushroom={mushroom} />
+      <Mushroom key={mushroom.id} mushroom={mushroom}/>
     ));
 
     return (
