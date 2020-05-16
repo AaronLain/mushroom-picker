@@ -5,7 +5,6 @@ import React from 'react';
 import './Mushroom.scss';
 
 class Mushroom extends React.Component {
-
   pickShroomEvent = (e) => {
     const { mushroom, pickAShroom } = this.props;
     e.preventDefault();

@@ -192,11 +192,10 @@ const pickShroom = (shroomId) => {
     console.error(response, 'response in forEach');
     if (response.id === shroomId) {
       response.inBasket = true;
-      console.error(response, 'response in if');
-      basket.push(response);
       mushrooms.splice(idx, 1);
-      console.error(basket, 'basket??');
+      basket.push(response);
     }
+    console.error(basket);
   });
 };
 

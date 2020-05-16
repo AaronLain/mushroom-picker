@@ -4,8 +4,9 @@ import Mushroom from '../Mushroom/Mushroom';
 
 class Basket extends React.Component {
   render() {
-    const buildBasket = this.props.basket.map((mushroom) => (
-      <Mushroom key={mushroom.id} mushroom={mushroom.inBasket} />
+    const { basket } = this.props;
+    const buildBasket = basket.map((mushroom) => (
+      <Mushroom key={mushroom.id} mushroom={mushroom} />
     ));
 
     return (
