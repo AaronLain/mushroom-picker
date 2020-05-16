@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-param-reassign */
 const mushrooms = [
   {
     id: 'shroom1',
@@ -6,6 +8,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom2',
@@ -14,6 +17,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom3',
@@ -22,6 +26,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom4',
@@ -30,6 +35,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom5',
@@ -38,6 +44,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom6',
@@ -46,6 +53,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom7',
@@ -54,6 +62,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom8',
@@ -62,6 +71,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom9',
@@ -70,6 +80,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom10',
@@ -78,6 +89,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom11',
@@ -86,6 +98,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom12',
@@ -94,6 +107,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom13',
@@ -102,6 +116,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom14',
@@ -110,6 +125,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom15',
@@ -118,22 +134,25 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom16',
     name: 'Magic Mushroom',
     imgUrl: 'https://d.newsweek.com/en/full/1552893/magic-mushrooms-psilocybin-psychedelics-stock-getty.jpg',
-    isMagic: false,
+    isMagic: true,
     isPoisonous: false,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom17',
     name: 'Amanita Phalloides',
     imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Amanita_phalloides_1.JPG/576px-Amanita_phalloides_1.JPG',
-    isMagic: true,
+    isMagic: false,
     isPoisonous: false,
     isDeadly: true,
+    inBasket: false,
   },
   {
     id: 'shroom18',
@@ -142,6 +161,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: true,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom19',
@@ -150,6 +170,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: true,
     isDeadly: false,
+    inBasket: false,
   },
   {
     id: 'shroom20',
@@ -158,6 +179,7 @@ const mushrooms = [
     isMagic: false,
     isPoisonous: true,
     isDeadly: false,
+    inBasket: false,
   },
 ];
 
@@ -166,4 +188,53 @@ const basket = [];
 const getBasket = () => basket;
 const getMushrooms = () => mushrooms;
 
-export default { getBasket, getMushrooms };
+const addShroomBGText = (shroom) => {
+  if (shroom.isPoisonous) {
+    shroom.BG = 'card bg-warning';
+    shroom.text = "Uh oh, you're poisoned-o";
+  } else if (shroom.isDeadly) {
+    shroom.BG = 'card bg-dark';
+    shroom.text = 'Darwinism going to work on you';
+  } else if (shroom.isMagic) {
+    shroom.BG = 'card bg-info';
+    shroom.text = 'Are the walls breathing like a dragon?';
+  } else {
+    shroom.BG = 'card';
+    shroom.text = 'safe for now, just a regular mushroom';
+  }
+};
+
+const basketCount = (newShroom) => {
+  const names = [];
+  const counts = {};
+  basket.forEach((shroom) => { if (shroom) names.push(shroom.name); });
+  names.forEach((shroom) => { counts[shroom] = (counts[shroom] || 0) + 1; });
+  const countArray = Object.entries(counts);
+  countArray.forEach((countArr) => {
+    if (newShroom.name === countArr[0]) { newShroom.count = countArr[1]; }
+  });
+};
+
+const pickShroom = (shroomId) => {
+  mushrooms.forEach((response) => {
+    if (response.id === shroomId) {
+      const newShroom = {
+        id: `basket${basket.length + 1}`,
+        name: response.name,
+        imgUrl: response.imgUrl,
+        isMagic: response.isMagic,
+        isPoisonous: response.isPoisonous,
+        isDeadly: response.isDeadly,
+        inBasket: true,
+        BG: '',
+        text: '',
+        count: 0,
+      };
+      newShroom.count = basketCount(response);
+      addShroomBGText(newShroom);
+      basket.push(newShroom);
+    }
+  });
+};
+
+export default { getBasket, getMushrooms, pickShroom };
