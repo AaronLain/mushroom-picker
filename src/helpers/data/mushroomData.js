@@ -236,6 +236,14 @@ const statusResponse = (shroom) => {
   return basket;
 };
 
+const winChecker = () => {
+  if (basket.length > 17) {
+    basket.forEach((shroom) => {
+      if (!shroom.isPoisonous && !shroom.isDeadly && !shroom.isMagic) console.error('you win!');
+    });
+  }
+};
+
 const pickShroom = (shroomId) => {
   const randInt = Math.ceil(Math.random() * 1500);
   mushrooms.forEach((response) => {
@@ -255,6 +263,7 @@ const pickShroom = (shroomId) => {
       addShroomBGText(newShroom);
       basket.push(newShroom);
       statusResponse(newShroom);
+      winChecker();
     }
   });
 };
