@@ -20,6 +20,7 @@ class App extends React.Component {
     mushroomData.pickShroom(shroomId);
     const shrooms = mushroomData.getMushrooms();
     const basket = mushroomData.getBasket();
+    console.error(shroomId, 'shroomId');
     this.setState({ shrooms, basket });
   }
 
@@ -27,8 +28,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <h2>Mushroom Picker!</h2>
-        <Forest forest={this.state.forest} pickAShroom={this.pickAShroom} />
-        <Basket basket={this.state.basket} />
+        <Basket basket={this.state.basket} pickAShroom={this.pickAShroom} />
+        <Forest forest={this.state.forest} />
       </div>
     );
   }

@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-param-reassign */
 const mushrooms = [
@@ -211,15 +212,36 @@ const basketCount = (newShroom) => {
   names.forEach((shroom) => { counts[shroom] = (counts[shroom] || 0) + 1; });
   const countArray = Object.entries(counts);
   countArray.forEach((countArr) => {
-    if (newShroom.name === countArr[0]) { newShroom.count = countArr[1]; }
+    if (newShroom.name === countArr[0]) { newShroom.count = countArr[1] + 1; }
   });
 };
 
+const addAllOtherMushrooms = () => {
+  mushrooms.forEach((shroom) => {
+    if (!shroom.isPoisonous && !shroom.isDeadly && !shroom.isMagic) basket.push(shroom);
+    console.error('you win');
+  });
+};
+
+const statusResponse = (shroom) => {
+  if (shroom.isPoisonous) {
+    console.error('Poison');
+    basket.splice(shroom, 2);
+  } else if (shroom.isDeadly) {
+    console.error('YOU DIED');
+    basket.splice(shroom, basket.length);
+  } else if (shroom.isMagic) {
+    addAllOtherMushrooms();
+  }
+  return basket;
+};
+
 const pickShroom = (shroomId) => {
+  const randInt = Math.ceil(Math.random() * 1500);
   mushrooms.forEach((response) => {
     if (response.id === shroomId) {
       const newShroom = {
-        id: `basket${basket.length + 1}`,
+        id: `basket${basket.length + randInt}`,
         name: response.name,
         imgUrl: response.imgUrl,
         isMagic: response.isMagic,
@@ -228,11 +250,11 @@ const pickShroom = (shroomId) => {
         inBasket: true,
         BG: '',
         text: '',
-        count: 0,
       };
       newShroom.count = basketCount(response);
       addShroomBGText(newShroom);
       basket.push(newShroom);
+      statusResponse(newShroom);
     }
   });
 };
