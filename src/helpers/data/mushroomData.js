@@ -232,6 +232,7 @@ const statusResponse = (shroom) => {
     basket.splice(shroom, basket.length);
   } else if (shroom.isMagic) {
     addAllOtherMushrooms();
+    
   }
   return basket;
 };
